@@ -1,9 +1,11 @@
 const state =  {
-    count: 0
+    count: 0,
+    waiting: false
 }   
 
 const getters = {
-  
+  waiting: state => state.waiting,
+  count: state => state.count,
 }
 
 const mutations = {
@@ -19,7 +21,15 @@ const mutations = {
     },
     INCREMENT_WITH_VALUE(state, value) {
         state.count += value;
-    }
+    },
+    // 显示和英寸waiting
+    SHOW_WAITING_MESSAGE(state){
+        state.waiting = true;
+    },
+    // 显示和英寸waiting
+    HIDE_WAITING_MESSAGE(state){
+        state.waiting = false;
+    },
 }
 
 
@@ -31,7 +41,16 @@ const actions = {
         commit("DECREMENT");
     },
     incrementWithValue({commit}, value) {
-        commit("INCREMENT_WITH_VALUE", parseInt(value))
+        commit("SHOW_WAITING_MESSAGE")
+        let intValue = parseInt(value);
+        setTimeout(() => {
+            if(isNaN(intValue)) {
+                alert("Not an Interger");
+            } else {
+                commit("INCREMENT_WITH_VALUE", intValue);
+                commit("HIDE_WAITING_MESSAGE");
+            }
+        }, 2000);
     }
 }
 

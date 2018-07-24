@@ -5,12 +5,14 @@ Vue.use(Vuex);
 
 import course from './modules/course'; 
 import test from './modules/test.js'; 
+import testForm from './modules/testForm.js'; 
 
 const store = new Vuex.Store({
     
     modules:{
         course,
-        test
+        test,
+        testForm,
     },
 
 

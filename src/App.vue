@@ -20,6 +20,11 @@
     <hr>
     <p></p>
     <app-decrement></app-decrement>
+    <p></p>
+    <p></p>
+
+    <app-Increment></app-Increment>
+
   </div>
 </template>
 
@@ -31,6 +36,7 @@ import Bucky from "./components/Bucky.vue";
 import Bendy from "./components/Bendy.vue";
 
 import Decrement from "./components/crement/Decrement.vue";
+import Increment from "./components/crement/Increment.vue";
 
 export default {
   name: "app",
@@ -60,6 +66,8 @@ export default {
   methods: {
     saveData(){
       console.log('saving. ...')
+      const people = this.$store.getters.people
+      console.log(people);
     },
     changeComponent(val) {
       console.log("val");
@@ -73,6 +81,7 @@ export default {
     "app-bucky": Bucky,
     "app-bendy": Bendy,
     "app-decrement": Decrement,
+    "app-Increment": Increment,
   }
 };
 </script>
