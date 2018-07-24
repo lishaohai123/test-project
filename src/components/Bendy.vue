@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>Bendy.vue</h1>
-        <h2>{{sayHello}}</h2>
+        <!-- <h2>{{sayHello}}</h2> -->
     </div>
 </template>
 

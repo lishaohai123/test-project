@@ -3,13 +3,17 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
-import course from './course.js'; 
+import course from './modules/course'; 
+import test from './modules/test.js'; 
 
 const store = new Vuex.Store({
     
     modules:{
-        course
-    }
+        course,
+        test
+    },
+
+
 })
 
 export default store

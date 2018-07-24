@@ -1,6 +1,6 @@
 const state =  {
     sayHello:{
-        message: null 
+        message: "哈哈哈哈" 
     }
 }   
 

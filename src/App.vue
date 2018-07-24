@@ -10,9 +10,16 @@
        >
       </el-option>
     </el-select>
-    <!-- <keep-alive> -->
+    <div class="height">
       <component :is="is_component_value"></component>
+    </div>
+    <!-- <keep-alive> -->
     <!-- </keep-alive> -->
+
+    <el-button type="primary" @click="saveData()">保存数据</el-button>
+    <hr>
+    <p></p>
+    <app-decrement></app-decrement>
   </div>
 </template>
 
@@ -23,11 +30,12 @@ import Emily from "./components/Emily.vue";
 import Bucky from "./components/Bucky.vue";
 import Bendy from "./components/Bendy.vue";
 
+import Decrement from "./components/crement/Decrement.vue";
+
 export default {
   name: "app",
   data() {
     return {
-      witch_to_show: "app-henry",
       options: [
         {
           value: "app-henry",
@@ -50,6 +58,9 @@ export default {
     };
   },
   methods: {
+    saveData(){
+      console.log('saving. ...')
+    },
     changeComponent(val) {
       console.log("val");
       console.log(val);
@@ -60,7 +71,8 @@ export default {
     "app-henry": Henry,
     "app-emily": Emily,
     "app-bucky": Bucky,
-    "app-bendy": Bendy
+    "app-bendy": Bendy,
+    "app-decrement": Decrement,
   }
 };
 </script>
@@ -69,5 +81,9 @@ export default {
 #app {
   max-width: 600px;
   margin: 0 auto;
+}
+.height {
+  margin-top: 300px;
+  text-align: center;
 }
 </style>

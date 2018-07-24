@@ -1,29 +1,32 @@
 <template>
     <div>
         <h1>Henry.vue</h1>
-        <p>{{sayHello}}</p>
+        <!-- <h2>{{sayHello}}</h2> -->
     </div>
 </template>
 <script>
 export default {
-    data(){
-        return {
-            message: "Henry.vue"
-        }
-    },
-    beforeCreate(){
-        console.log('Henry.vue  beforeCreate')
-    },
-    created(){
-        console.log('Henry.vue  created')
-    },
-    computed:{
-        sayHello:{
-            get(){
-                return 'sayHello 哈哈哈哈哈'
-            },
-            set(){}
-        }
+  data() {
+    return {
+      message: "Henry.vue"
+    };
+  },
+  beforeCreate() {
+    console.log("Henry.vue  beforeCreate");
+  },
+  created() {
+    // alert("created");
+    console.log("Henry.vue  Create ");
+    this.$store.commit("setSayHello", { message: "Welcome to Henry.vue" });
+  },
+  computed: {
+    sayHello: {
+      get() {
+        // alert("sayHello");
+        return this.$store.getters.sayHello;
+      },
+      set() {}
     }
-}
+  }
+};
 </script>
