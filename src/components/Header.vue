@@ -1,0 +1,6 @@
+<template>
+  <div class="app-header">
+    <h1>Header </h1>
+  </div>
+</template>
+
