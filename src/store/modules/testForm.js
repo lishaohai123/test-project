@@ -1,14 +1,20 @@
 const state =  {
-    people:{}
+    people:{},
+    checked: true
 }   
 
 const getters = {
     donePhone: state => state.phone,
     doneName:  state => state.name,
-    people:  state => state.people
+    people:  state => state.people,
+    checked:  state => state.checked
+
 }
 
 const mutations = {
+    UPDATE_CHECKED(state, bool){
+        state.checked = bool;
+    },
     UPDATE_PHONE(state, value){
         state.phone = value;
     },

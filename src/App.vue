@@ -32,7 +32,7 @@
     <p></p>
 
     <app-Increment></app-Increment>
-
+    <!-- <h1> {{cehcked}}</h1> -->
   </div>
 </template>
 
@@ -50,7 +50,7 @@ export default {
   name: "app",
   data() {
     return {
-      checked: true,
+      // checked: true,
       checked4: true,
       // checked2: true,
 
@@ -99,6 +99,14 @@ export default {
     }
   },
   computed:{
+    checked:{
+      get(){
+        return this.$store.getters.checked;
+      },
+      set(bool){
+        this.$store.commit("UPDATE_CHECKED", bool);
+      }
+    },
     checked1:{
       get(){
         return this.checked;
@@ -117,9 +125,9 @@ export default {
             message: '删除成功!'
           });
             
-        if(this.checked !== value){
-          this.checked = value;
-        }
+          if(this.checked !== value){
+            this.checked = value;
+          }
         }).catch(() => {
           this.$message({
             type: 'info',
