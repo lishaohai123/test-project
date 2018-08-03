@@ -17,6 +17,14 @@
     <!-- </keep-alive> -->
 
     <el-button type="primary" @click="saveData()">保存数据</el-button>
+    <div></div>
+      <h1>{{"checked:" + checked }}</h1>
+      <div></div>
+      <h1>{{"checked4:" + checked4}}</h1>
+    <p>
+        <el-checkbox v-model="checked1" @click.native="clickHandler">隐藏</el-checkbox>
+        <el-checkbox v-model="checked2" @click.native="clickHandler">显示</el-checkbox>
+    </p>
     <hr>
     <p></p>
     <app-decrement></app-decrement>
@@ -42,6 +50,10 @@ export default {
   name: "app",
   data() {
     return {
+      checked: true,
+      checked4: true,
+      // checked2: true,
+
       options: [
         {
           value: "app-henry",
@@ -64,6 +76,18 @@ export default {
     };
   },
   methods: {
+    clickHandler (value){
+      // alert(value);
+    },
+    changeChecked1(value){
+      
+      // this.checked2 = !this.checked2;
+      // this.checked1 = !this.checked1;
+    },
+    changeChecked2(value){
+      // this.checked2 = !this.checked2;
+      // this.checked1 = !this.checked1;
+    },
     saveData(){
       console.log('saving. ...')
       const people = this.$store.getters.people
@@ -73,6 +97,68 @@ export default {
       console.log("val");
       console.log(val);
     }
+  },
+  computed:{
+    checked1:{
+      get(){
+        return this.checked;
+      },
+      set(value){
+        if(this.checked == true){
+          return ;  
+        }
+        this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.$message({
+            type: 'success',
+            message: '删除成功!'
+          });
+            
+        if(this.checked !== value){
+          this.checked = value;
+        }
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消删除'
+          });          
+        });
+      
+      }
+    },
+    checked2:{
+      get(){
+        return !this.checked;
+      },
+      set(value){
+        if(this.checked === false){
+          return ;
+        }
+        // this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+        //   confirmButtonText: '确定',
+        //   cancelButtonText: '取消',
+        //   type: 'warning'
+        // }).then(() => {
+        //   this.$message({
+        //     type: 'success',
+        //     message: '删除成功!'
+        //   });
+            
+        if(this.checked === value){
+          this.checked = !value;
+        }
+        // }).catch(() => {
+        //   this.$message({
+        //     type: 'info',
+        //     message: '已取消删除'
+        //   });          
+        // });
+
+      }
+    },
   },
   components: {
     "app-header": Header,
